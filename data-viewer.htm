@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Viewer</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style type="text/css">
+	body {
+		margin-top: 48px;
+	}
+</style>
+<body>
+<div class="container">
+	<div id="data">
+	data
+	</div>
+	<div id="json">
+
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	{{ data }}
+	console.log(window._sharedData);
+
+	document.getElementById('data').innerHTML = '<img src="'+window._sharedData.entry_data.ProfilePage[0].user.profile_pic_url+'"><h2>' + window._sharedData.entry_data.ProfilePage[0].user.full_name + '</h2><p>(' + window._sharedData.entry_data.ProfilePage[0].user.followed_by.count + 'st följare)</p>';
+	document.getElementById('json').innerHTML = '<pre>' + JSON.stringify(window._sharedData, null, 4) + '</pre>';
+</script>
+</html>
