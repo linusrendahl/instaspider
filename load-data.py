@@ -11,6 +11,7 @@ class InstaSpider(scrapy.Spider):
 	def __init__(self):
 		self.username = input('Who do you want to crawl?')
 		self.start_urls = ['https://www.instagram.com/'+self.username+'/']
+		# Google cache URL: 'http://webcache.googleusercontent.com/search?q=cache:instagram.com/'+username+'/&num=1&strip=0&vwsrc=1'
 
 	def parse(self, response):
 
