@@ -1,5 +1,0 @@
-1. enter a user from sweden
-2. load and save all data
-3. save list of followers
-4. go through all followers
-5. if follower country_code == SE (save, go back to step 1) ELSE pass and go to next follower
