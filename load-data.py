@@ -1,6 +1,7 @@
 import re
 import scrapy
 from scrapy.crawler import CrawlerProcess
+import os
 
 
 class InstaSpider(scrapy.Spider):
@@ -17,8 +18,9 @@ class InstaSpider(scrapy.Spider):
 
 		page = response.url.split("/")[-2]
 		filename = 'instagram-%s-data.txt' % page
+		path = 'data/json/'
 
-		with open(filename, 'w') as f:
+		with open(os.path.join(path, filename), 'w') as f:
 			data = response.body.decode()
 			text = re.search(r'window._sharedData = .*?};', data, re.DOTALL).group()
 			f.write(text)
@@ -28,7 +30,10 @@ class LoadData():
 
 	def open(self, username):
 		filename = 'instagram-%s-data.txt' % username
-		with open(filename, 'r') as f, open('data-viewer.htm', 'r') as source, open('data-viewer-'+username+'.htm', 'w') as outfile:
+		path_json = 'data/json/'
+		path_html = 'data/html/'
+
+		with open(os.path.join(path_json, filename), 'r') as f, open('data-viewer.htm', 'r') as source, open(os.path.join(path_html, 'data-viewer-'+username+'.htm'), 'w') as outfile:
 			data = f.read()
 
 			html = source.read()
